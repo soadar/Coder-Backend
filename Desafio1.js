@@ -84,10 +84,3 @@ console.log("--------------- Extra addProduct sin algun parametro --------------
 console.log(producto.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin imagen", 25));
 
 console.log("--------------- End ---------------");
-
-
-
-// producto.addProduct("nombre del producto2", "descripcion del prod2", 9002, "sasa2.jpg", 0002, 82)
-// producto.addProduct("nombre del producto3", "descripcion del prod3", 9003, "sasa3.jpg", 0003, 83)
-// producto.addProduct("nombre del producto4", "descripcion del prod4", 9003, "sasa4.jpg", 0003, 84)
-// producto.addProduct("nombre del producto5", "descripcion del prod4", 9003, "sasa4.jpg", 0003) //falta un parametro, no se agrega
