@@ -2,7 +2,7 @@
   "name": "07---desafio",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
     "start:express": "node .",
