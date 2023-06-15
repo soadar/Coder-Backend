@@ -36,6 +36,6 @@ app.get('/products/:pid', async (req, res) => {
     }
 })
 
-app.listen(8090, () => {
-    console.log('server express listening on port 8090');
+app.listen(8080, () => {
+    console.log('server express listening on port 8080');
 });
