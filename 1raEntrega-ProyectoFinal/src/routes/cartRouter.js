@@ -14,13 +14,10 @@ router.post('/', async (req, res) => {
 
 router.get('/:cid', async (req, res) => {
     try {
-        //        const product = await manager.getProductById(id);
-        //if (product) {
         const { cid } = req.params;
-        const cart = await manager.getCartById(Number(cid))
+        const cart = await manager.getCartById(Number(cid));
         if (cart) {
-            res.status(200).json(cart)
-            //res.json({ message: `El producto con id: ${id} fue actualizo` });
+            res.status(200).json(cart);
         } else {
             res.status(400).json({ message: `El producto con id: ${cid} no fue encontrado` });
         }
@@ -34,12 +31,10 @@ router.post('/:cid/products/:pid', async (req, res) => {
     try {
         const { cid, pid } = req.params;
         if (!isNaN(Number(cid)) && !isNaN(Number(pid))) {
-            //console.log(Number(cid), Number(pid));
-            //({ message: 'Cart found', cart })
-            res.json(await manager.updateCart(Number(cid), Number(pid)))
+            res.json(await manager.updateCart(Number(cid), Number(pid)));
         }
         else {
-            res.status(400).json({ message: `los parametros no son numericos` });
+            res.status(400).json({ message: `los parametros deben ser numeros` });
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
