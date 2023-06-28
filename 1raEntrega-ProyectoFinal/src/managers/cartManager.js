@@ -21,7 +21,6 @@ export default class CartManager {
             const index = this.carts.findIndex((cart) => cart.id === idCart);
             if (index !== -1) {
                 if (await manager.getProductById(idProduct)) {
-                    //const prodIdx = cartsFile[cartIdx].products.findIndex(product => product.prodId === cartProd.prodId)
                     let carroIndex = this.carts[index].products.findIndex((cart) => cart.id === idProduct);
                     if (carroIndex !== -1) {
                         let cant = this.carts[index].products[carroIndex].quantity;

@@ -34,9 +34,6 @@ router.get('/:pid', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const { title, description, code, price, status, stock, category, thumbnails } = req.body;
-        //console.log(Object.keys(req.body).length);
-
-        // verificar que todos sean obligatorios
         const newProduct = await manager.addProduct(title, description, code, Number(price), Boolean(status), Number(stock), category, thumbnails);
         res.json(newProduct);
     } catch (error) {
@@ -48,13 +45,12 @@ router.put("/:pid", async (req, res) => {
     try {
         const datos = req.body;
         const { pid } = req.params;
-        const id = parseInt(pid);
-        const product = await manager.getProductById(id);
+        const product = await manager.getProductById(Number(pid));
         if (product) {
-            await manager.updateProduct(id, datos);
-            res.json({ message: `El producto con id: ${id} fue actualizo` });
+            await manager.updateProduct(Number(pid), datos);
+            res.json({ message: `El producto con id: ${pid} fue actualizo` });
         } else {
-            res.status(400).json({ message: `El producto con id: ${id} no fue encontrado` });
+            res.status(400).json({ message: `El producto con id: ${pid} no fue encontrado` });
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -64,13 +60,12 @@ router.put("/:pid", async (req, res) => {
 router.delete('/:pid', async (req, res) => {
     try {
         const { pid } = req.params;
-        const id = parseInt(pid);
-        const product = await manager.getProductById(id);
+        const product = await manager.getProductById(Number(pid));
         if (product) {
-            await manager.deleteProduct(id);
-            res.status(200).json({ message: `El producto con id: ${id} se elimino correctamente` });
+            await manager.deleteProduct(Number(pid));
+            res.status(200).json({ message: `El producto con id: ${pid} se elimino correctamente` });
         } else {
-            res.json({ message: `El producto con id: ${id} no fue encontrado` })
+            res.json({ message: `El producto con id: ${pid} no fue encontrado` })
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
