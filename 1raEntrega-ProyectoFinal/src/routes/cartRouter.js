@@ -2,7 +2,7 @@ import { Router } from "express";
 import cartManager from '../managers/cartManager.js';
 
 const router = Router();
-const manager = new cartManager('src/carts.json');
+const manager = new cartManager('src/carrito.json');
 
 router.get('/', async (req, res) => {
     res.json(await manager.getCarts());

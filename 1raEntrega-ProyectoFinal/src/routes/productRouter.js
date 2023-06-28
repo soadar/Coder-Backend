@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
         //console.log(Object.keys(req.body).length);
 
         // verificar que todos sean obligatorios
-        const newProduct = await manager.addProduct(title, description, code, Number(price), Boolean(status), Number(stock), category, Array(thumbnails));
+        const newProduct = await manager.addProduct(title, description, code, Number(price), Boolean(status), Number(stock), category, thumbnails);
         res.json(newProduct);
     } catch (error) {
         res.status(500).json({ message: error.message });
