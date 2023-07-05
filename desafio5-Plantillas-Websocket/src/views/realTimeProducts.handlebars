@@ -1,0 +1,80 @@
+<div
+  class="d-flex text-center p-2 container rounded-4 col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-8 col-8 bg-primary bg-opacity-50 mt-5 w-25"
+>
+  <input
+    id="idBorrar"
+    type="text"
+    class="form-control"
+    placeholder="id a eliminar"
+  />
+  <button id="borrar" class="btn btn-primary ms-2">Borrar</button>
+</div>
+<div
+  class="container rounded-4 col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-8 col-8 bg-secondary bg-opacity-50 mt-3"
+>
+  <form id="form" class="py-4 p-5">
+    <h2 class="text-center">Carga de formulario</h2>
+    <div class="mb-3 mt-3">
+      <input type="text" class="form-control" id="title" placeholder="Title" />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        placeholder="description"
+      />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="code" placeholder="code" />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="price" placeholder="price" />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="status"
+        placeholder="status"
+      />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="stock" placeholder="stock" />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="category"
+        placeholder="category"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="thumbnails"
+        placeholder="thumbnails"
+      />
+    </div>
+
+    <div class="mb-1">
+      <button id="enviar" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>
+
+<h2 class="text-center">Lista de productos</h2>
+
+<div class="mx-auto w-50">
+  <ul id="listado" class="list-group list-unstyled m-4 card">
+  </ul>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+<script src="index.js"></script>
