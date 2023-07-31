@@ -21,6 +21,9 @@ export default class ProductDaoMongoDB {
 
     async getById(id) {
         try {
+            if (id.length != 24) {
+                return false
+            }
             const response = await ProductModel.findById(id);
             return response;
         } catch (error) {

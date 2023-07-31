@@ -15,9 +15,8 @@ export const getAll = async () => {
 
 export const getById = async (id) => {
     try {
-        const item = await prodDao.getById(id);
-        if (!item) return false;
-        else return item;
+        const response = await prodDao.getById(id);
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -25,9 +24,8 @@ export const getById = async (id) => {
 
 export const create = async (obj) => {
     try {
-        const newProd = await prodDao.create(obj);
-        if (!newProd) return false;
-        else return newProd;
+        const response = await prodDao.create(obj);
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -35,8 +33,8 @@ export const create = async (obj) => {
 
 export const update = async (cid, pic) => {
     try {
-        const item = await prodDao.update(cid, pic);
-        return item;
+        const response = await prodDao.update(cid, pic);
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -44,8 +42,8 @@ export const update = async (cid, pic) => {
 
 export const updateCant = async (cid, pic, cant) => {
     try {
-        const item = await prodDao.updateCant(cid, pic, cant);
-        return item;
+        const response = await prodDao.updateCant(cid, pic, cant);
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -53,8 +51,8 @@ export const updateCant = async (cid, pic, cant) => {
 
 export const delProdInCart = async (cid, pic) => {
     try {
-        const item = await prodDao.delProdInCart(cid, pic);
-        return item;
+        const response = await prodDao.delProdInCart(cid, pic);
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -62,8 +60,8 @@ export const delProdInCart = async (cid, pic) => {
 
 export const delProdsInCart = async (cid) => {
     try {
-        const item = await prodDao.delProdsInCart(cid);
-        return item;
+        const response = await prodDao.delProdsInCart(cid);
+        return response;
     } catch (error) {
         console.log(error);
     }

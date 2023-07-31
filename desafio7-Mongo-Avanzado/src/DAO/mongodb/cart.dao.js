@@ -16,6 +16,9 @@ export default class CartDaoMongoDB {
 
     async getById(id) {
         try {
+            if (id.length != 24) {
+                return false;
+            }
             const response = await CartModel.findById(id).populate('products._id');
             return response;
         } catch (error) {
@@ -34,6 +37,9 @@ export default class CartDaoMongoDB {
 
     async update(cid, pid) {
         try {
+            if (cid.length != 24 || pid.length != 24) {
+                return false
+            }
             const product = await ProductModel.findById(pid);
             if (product) {
                 const idSearch = new ObjectId(pid);
@@ -47,12 +53,9 @@ export default class CartDaoMongoDB {
                     }
                     cart.save();
                     return cart;
-                } else {
-                    return "El chango no existe";
                 }
-            } else {
-                return "El producto no existe";
-            };
+            }
+            return false;
         } catch (error) {
             console.log(error);
         }
@@ -60,6 +63,9 @@ export default class CartDaoMongoDB {
 
     async delete(id) {
         try {
+            if (id.length != 24) {
+                return false;
+            }
             const response = await CartModel.findByIdAndDelete(id);
             return response;
         } catch (error) {
@@ -67,84 +73,78 @@ export default class CartDaoMongoDB {
         }
     }
 
-    async updateCant(cId, pId, cant) {
+    async updateCant(cid, pid, cant) {
         try {
-            const cart = await CartModel.findById(cId);
-            if (cart) {
-                const prod = await ProductModel.findById(pId);
-                if (prod) {
-                    return await this.addProdToCart(cId, pId, cant);
-                } else {
-                    return "El producto no existe";
-                }
-            } else {
-                return "El chango no existe";
+            if (cid.length != 24 || pid.length != 24) {
+                return false
             }
+            const cart = await CartModel.findById(cid);
+            if (cart) {
+                const prod = await ProductModel.findById(pid);
+                if (prod) {
+                    return await this.addProdToCart(cid, pid, cant);
+                }
+            }
+            return false;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async addProdToCart(cId, pId, cant) {
+    async addProdToCart(cid, pid, cant) {
         try {
-            const cart = await CartModel.findById(cId);
-            if (cart) {
-                const found = cart.products.find(element => element["_id"].equals(pId));
-                if (found) {
-                    found.quantity = cant;
-                } else {
-                    cart.products.push({ _id: pId, quantity: cant });
-                }
-                cart.save();
-                return cart;
+            const cart = await CartModel.findById(cid);
+            const found = cart.products.find(element => element["_id"].equals(pid));
+            if (found) {
+                found.quantity = cant;
             } else {
+                cart.products.push({ _id: pid, quantity: cant });
             }
-
+            cart.save();
+            return cart;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async delProdInCart(cId, pId) {
+    async delProdInCart(cid, pid) {
         try {
-            const cart = await CartModel.findById(cId);
+            if (cid.length != 24 || pid.length != 24) {
+                return false
+            }
+            const cart = await CartModel.findById(cid);
             if (cart) {
-                const prod = await ProductModel.findById(pId);
+                const prod = await ProductModel.findById(pid);
                 if (prod) {
-                    const found = cart.products.find(element => element["_id"].equals(pId));
+                    const found = cart.products.find(element => element["_id"].equals(pid));
                     if (found) {
-                        const newProducts = cart.products.filter(element => !element["_id"].equals(pId));
+                        const newProducts = cart.products.filter(element => !element["_id"].equals(pid));
                         cart.products = newProducts;
                         cart.save();
                         return cart;
-                    } else {
-                        return "El chango no contiene el producto indicado";
                     }
-                } else {
-                    return "El producto no existe";
                 }
-            } else {
-                return "El chango no existe";
             }
+            return false;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async delProdsInCart(cId) {
+    async delProdsInCart(id) {
         try {
-            const cart = await CartModel.findById(cId);
+            if (id.length != 24) {
+                return false;
+            }
+            const cart = await CartModel.findById(id);
             if (cart) {
                 if (cart.products.length) {
                     cart.products = [];
                     cart.save();
                     return cart;
-                } else {
-                    return "El chango ya esta vacio";
                 }
-            } else {
-                return "El chango no existe";
             }
+            return false;
         } catch (error) {
             console.log(error);
         }

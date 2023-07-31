@@ -26,17 +26,15 @@ router.get("/carts/:cid", async (req, res) => {
     const { cid } = req.params;
     const cart = await cartManager.getById(cid);
     if (cart) {
-
       const prods = [];
-      cart?.products?.forEach((e) => {
+      cart.products.forEach((e) => {
         prods.push(e._id);
       })
       res.render("cart", { prods });
     } else {
       res.status(500).json({
         status: 'error',
-        msg: 'Ocurrio un error.',
-        error: error.message
+        msg: 'El id del carrito no existe.',
       });
     }
   } catch (error) {
@@ -51,7 +49,7 @@ router.get("/carts/:cid", async (req, res) => {
 });
 
 router.get('/products', async (req, res) => {
-  const { page, limit, sort, title, description, code, price, status, stock, category, thumbnails } = req.query;
+  let { page, limit, sort, title, description, code, price, status, stock, category, thumbnails } = req.query;
   const query = {
     title,
     description,
@@ -62,6 +60,8 @@ router.get('/products', async (req, res) => {
     category,
     thumbnails
   }
+  if (isNaN(page)) page = 1;
+  if (isNaN(limit)) limit = 10;
 
   const response = await service.getAll(page, limit, sort, query);
 

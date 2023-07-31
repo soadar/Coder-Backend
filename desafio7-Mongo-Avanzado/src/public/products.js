@@ -55,5 +55,5 @@ inicio()
 const btnChango = document.getElementById('verChango')
 btnChango.addEventListener('click', (e) => {
     let url = `http://localhost:8080/carts/${carrito}`
-    console.log(e.target.href = url);
+    e.target.href = url;
 });

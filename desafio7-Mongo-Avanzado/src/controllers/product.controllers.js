@@ -36,8 +36,13 @@ export const getAll = async (req, res, next) => {
 export const getById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const prod = await service.getById(Number(id));
-        if (!prod) res.status(404).json({ msg: "Product not found!" });
+        const prod = await service.getById(id);
+        if (!prod) {
+            res.status(404).json({
+                status: 'error',
+                msg: 'El ID no fue encontrado.',
+            });
+        }
         else res.json(prod);
     } catch (error) {
         next(error.message);
