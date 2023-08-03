@@ -1,0 +1,54 @@
+<main class="form-signin w-25 m-auto mt-5">
+  <h1 class="h3 mb-3 fw-normal text-center">Inicio de sesion</h1>
+
+  {{#if createOk}}
+    <div class="alert alert-success" role="alert">
+      Usuario creado con exito, ya puedes iniciar sesion!
+    </div>
+  {{/if}}
+
+  {{#if createFail}}
+    <div class="alert alert-danger" role="alert">
+      El email ya se encuentra registrado.
+    </div>
+  {{/if}}
+
+  {{#if noLoggedIn}}
+    <div class="alert alert-danger" role="alert">
+      Debe iniciar sesion.
+    </div>
+  {{/if}}
+
+  {{#if logout}}
+    <div class="alert alert-warning" role="alert">
+      Se cerro la sesion correctamente.
+    </div>
+  {{/if}}
+
+  <form action="/login" method="post">
+    <div class="form-floating mt-5">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder=""
+      />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating my-3">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder=""
+      />
+      <label for="password">Contraseña</label>
+    </div>
+    <button class="btn btn-primary w-100 my-2" type="submit">Iniciar sesion</button>
+  </form>
+  <a class="btn btn-primary w-100 my-2" href="/register">Registrarme</a>
+  <div id="msg"></div>
+</main>
