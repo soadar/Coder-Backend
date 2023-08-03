@@ -23,7 +23,7 @@ router.get("/realtimeproducts", async (req, res) => {
   res.render("realtimeproducts");
 });
 
-router.get("/carts/:cid", async (req, res) => {
+router.get("/carts/:cid", validateLogin, async (req, res) => {
   try {
     const { cid } = req.params;
     const cart = await cartManager.getById(cid);
@@ -108,7 +108,7 @@ router.get('/login', noLogAgain, (req, res) => {
   res.render('login')
 })
 
-router.get('/register', (req, res) => {
+router.get('/register', noLogAgain, (req, res) => {
   res.render('register')
 })
 
