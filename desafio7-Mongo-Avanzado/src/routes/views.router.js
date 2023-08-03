@@ -79,6 +79,11 @@ router.get('/products', async (req, res) => {
     next = response.hasNextPage ? `http://localhost:8080/products?${params}page=${response.nextPage}` : null;
     prev = response.hasPrevPage ? `http://localhost:8080/products?${params}page=${response.prevPage}` : null;
   }
+  if (flag === 1 && limit !== 10) {
+    prev = response.hasPrevPage ? `http://localhost:8080/products?${params}page=${response.prevPage}&limit=${limit}` : null;
+    next = response.hasNextPage ? `http://localhost:8080/products?${params}page=${response.nextPage}&limit=${limit}` : null;
+  }
+
   res.render('products', {
     status: "success",
     payload: response.docs,
