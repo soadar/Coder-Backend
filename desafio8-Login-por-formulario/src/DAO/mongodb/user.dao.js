@@ -4,7 +4,14 @@ export default class UserDao {
     async loginUser(user) {
         try {
             const { email, password } = user;
-            const userExist = await UserModel.findOne({ email, password });
+            if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
+                return user = {
+                    email: 'adminCoder@coder.com',
+                    password: 'adminCod3r123',
+                    role: 'admin'
+                }
+            }
+            const userExist = await UserModel.findOne({ email });
             if (userExist) return userExist;
             else return false;
         } catch (error) {
@@ -17,10 +24,6 @@ export default class UserDao {
             const { email, password } = user;
             const existUser = await UserModel.findOne({ email });
             if (!existUser) {
-                if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-                    const newUser = await UserModel.create({ ...user, role: 'admin' });
-                    return newUser;
-                }
                 const newUser = await UserModel.create({ ...user, role: 'usuario' });
                 return newUser;
             } else return false;

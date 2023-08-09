@@ -12,7 +12,7 @@ const cartManager = new CartManager();
 
 router.get("/", async (req, res) => {
   const products = await productManager.getAll();
-  res.render("index", { products });
+  res.render("login", { products });
 });
 
 router.get('/chat', (req, res) => {

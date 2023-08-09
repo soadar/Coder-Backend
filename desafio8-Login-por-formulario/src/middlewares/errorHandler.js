@@ -7,7 +7,7 @@ export const errorHandler = (error, req, res, next) => {
 export const noLogAgain = (req, res, next) => {
     if (req.session.info?.loggedIn) {
         return res.redirect('/products');
-    }
+    } next();
 };
 
 export const validateLogin = (req, res, next) => {
