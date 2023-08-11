@@ -1,0 +1,19 @@
+#products {
+  display: flex;
+  margin: 3px;
+}
+
+.product {
+  width: 25rem;
+  height: 18rem;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+li {
+  margin-left: 15px;
+}
+
+a {
+  text-decoration: none;
+}
