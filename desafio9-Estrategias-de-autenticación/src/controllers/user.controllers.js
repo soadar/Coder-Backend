@@ -3,11 +3,11 @@ const userDao = new UserDao();
 
 export const loginUser = async (req, res, next) => {
     try {
-        const user = await userDao.getById(req.session.passport.user);
-        res.json({
-            msg: 'login ok',
-            user
-        })
+        if (req.user) {
+            res.redirect('/products')
+        } else {
+            res.render('login', { msg: 'Usuario o contraseña incorrecta.', alert: 'danger' })
+        }
     } catch (error) {
         next(error);
     }

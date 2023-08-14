@@ -104,6 +104,8 @@ router.get('/products', validateLogin, async (req, res) => {
 });
 
 router.get('/login', noLogAgain, (req, res) => {
+  const { error } = req.query;
+  if (error === 'fail') res.render('login', { msg: 'Usuario o contraseña incorrecta.', alert: 'danger' });
   res.render('login')
 })
 
@@ -113,23 +115,23 @@ router.get('/register', noLogAgain, (req, res) => {
 
 router.post("/login",
   passport.authenticate('login', {
-    failureRedirect: "/login",
+    failureRedirect: "/login?error=fail",
     successRedirect: "/products"
   }))
 
 router.post("/register", (req, res, next) => {
   passport.authenticate('register', (err, user) => {
     if (!user) {
-      res.render('login', { createFail: true })
+      res.render('login', { msg: 'El email ya se encuentra registrado.', alert: 'danger' })
     } else {
-      res.render('login', { createOk: true })
+      res.render('login', { msg: 'Usuario creado con exito, ya puedes iniciar sesion.', alert: 'success' })
     }
   })(req, res, next)
 })
 
 router.get('/logout', (req, res) => {
   req.session.destroy();
-  return res.render('login', { logout: true })
+  return res.render('login', { msg: 'Se cerro la sesion correctamente.', alert: 'success' })
 })
 
 router.get('/admin', validateLogin, isAdmin, (req, res) => {

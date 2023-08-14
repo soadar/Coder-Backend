@@ -6,27 +6,9 @@
 <main class="form-signin w-25 m-auto mt-5">
   <h1 class="h3 mb-3 fw-normal text-center">Inicio de sesion</h1>
 
-  {{#if createOk}}
-    <div class="alert alert-success" role="alert">
-      Usuario creado con exito, ya puedes iniciar sesion!
-    </div>
-  {{/if}}
-
-  {{#if createFail}}
-    <div class="alert alert-danger" role="alert">
-      El email ya se encuentra registrado.
-    </div>
-  {{/if}}
-
-  {{#if noLoggedIn}}
-    <div class="alert alert-danger" role="alert">
-      Debe iniciar sesion.
-    </div>
-  {{/if}}
-
-  {{#if logout}}
-    <div class="alert alert-warning" role="alert">
-      Se cerro la sesion correctamente.
+  {{#if msg}}
+    <div class="alert alert-{{alert}}" role="alert">
+      {{msg}}
     </div>
   {{/if}}
 

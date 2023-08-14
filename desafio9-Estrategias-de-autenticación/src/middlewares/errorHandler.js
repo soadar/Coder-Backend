@@ -12,7 +12,7 @@ export const noLogAgain = (req, res, next) => {
 
 export const validateLogin = (req, res, next) => {
     if (req.isAuthenticated() || req.user?.isGitHub) return next();
-    return res.render('login', { noLoggedIn: true })
+    res.render('login', { msg: 'Debe iniciar sesion.', alert: 'danger' })
 };
 
 export const isAdmin = (req, res, next) => {
