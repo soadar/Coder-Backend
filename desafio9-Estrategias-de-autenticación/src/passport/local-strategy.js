@@ -38,21 +38,10 @@ passport.use('login', loginStrategy);
 passport.use('register', registerStrategy);
 
 passport.serializeUser((user, done) => {
-    if (user.email === 'adminCoder@coder.com') {
-        user._id = 'abcabcabcabc';
-    }
     done(null, user._id)
 });
 
 passport.deserializeUser(async (id, done) => {
-    if (id === 'abcabcabcabc') {
-        const user = {
-            _id: id,
-            email: 'adminCoder@coder.com',
-            role: 'admin'
-        }
-        return done(null, user);
-    }
     const user = await userDao.getById(id);
     return done(null, user);
 });

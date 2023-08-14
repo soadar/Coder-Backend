@@ -5,9 +5,6 @@ export default class UserDao {
     async loginUser(user) {
         try {
             const { email, password } = user;
-            if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-                return { email };
-            };
             const userExist = await this.getByEmail(email);
             if (userExist) {
                 const validPass = isValidPassword(password, userExist);
@@ -25,7 +22,11 @@ export default class UserDao {
             const userExist = await this.getByEmail(email);
             if (!userExist) {
                 if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-                    return false;
+                    return await UserModel.create({
+                        ...user,
+                        password: createHash(password),
+                        role: 'admin'
+                    });
                 }
                 return await UserModel.create({
                     ...user,
