@@ -111,14 +111,28 @@ export const purchase = async (req, res) => {
 
         const user = await service.getByCart(cid)
 
-        const total = await service.purchase(cid);
+        if (user) {
+            const total = await service.purchase(cid);
 
-        const response = await TicketModel.create({
-            code: generarStringAleatorio(),
-            amount: total,
-            purchaser: user.email
+            if (!total) {
+                return res.status(204).json({
+                    status: 'error',
+                    msg: 'El/los productos no tienen stock.',
+                });
+            }
+
+            const response = await TicketModel.create({
+                code: generarStringAleatorio(),
+                amount: total,
+                purchaser: user.email
+            });
+            return res.json(response);
+        }
+        return res.status(500).json({
+            status: 'error',
+            msg: 'No existe ningun usuario con ese carrito.',
         });
-        return res.json(response);
+
     } catch (error) {
         next(error.message);
     }

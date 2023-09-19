@@ -151,18 +151,15 @@ export default class CartDaoMongo extends MongoDao {
         const subTotales = await Promise.all(cart.products.map(async product => {
             const prod = await ProductModel.findById(product._id);
             if (product.quantity <= prod.stock) {
-                console.log(prod.title, "alcanza");
                 prod.stock -= product.quantity
                 await prod.save();
                 return prod.price * product.quantity;
             } else {
-                console.log(prod.title, "no alcanza");
                 productsSinStock.push(product);
                 return 0;
             }
         }));
-        console.log("arrayCarro", cart.products);
-
+        
         cart.products = productsSinStock;
         await cart.save();
 
