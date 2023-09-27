@@ -46,12 +46,7 @@ logger.add('dev', {
         new winston.transports.Console({
             level: 'debug',
             format: consoleFormat,
-        }),
-        new winston.transports.File({
-            filename: './src/logs/errors.log',
-            level: 'debug',
-            format: fileFormat,
-        }),
+        })
     ]
 });
 
