@@ -8,7 +8,7 @@ export default class MySQLDao {
             const response = await this.model.findAll();
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -21,7 +21,7 @@ export default class MySQLDao {
             });
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -30,7 +30,7 @@ export default class MySQLDao {
             const response = await this.model.create(obj);
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -43,7 +43,7 @@ export default class MySQLDao {
             });
             return obj;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -56,7 +56,7 @@ export default class MySQLDao {
             });
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 }

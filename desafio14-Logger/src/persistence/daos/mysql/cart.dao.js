@@ -18,7 +18,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             });
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
     //falta migrar
@@ -44,7 +44,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -60,7 +60,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             });
             return response;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -79,7 +79,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -95,7 +95,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             cart.save();
             return cart;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -119,7 +119,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 
@@ -138,7 +138,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     }
 }

@@ -10,7 +10,7 @@ export const loginUser = async (user) => {
         const newUser = await userDao.loginUser(user);
         return newUser;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 };
 
@@ -19,7 +19,7 @@ export const registerUser = async (user) => {
         const newUser = await userDao.registerUser(user);
         return newUser;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 };
 
@@ -30,6 +30,6 @@ export const getByIdDTO = async (id) => {
         if (!prod) return false;
         else return prod;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }

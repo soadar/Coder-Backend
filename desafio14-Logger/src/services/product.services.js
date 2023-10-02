@@ -10,7 +10,7 @@ export const getAll = async (page, limit, sort, query) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }
 
@@ -20,7 +20,7 @@ export const getById = async (id) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }
 
@@ -30,7 +30,7 @@ export const create = async (obj) => {
         if (!newProd) return false;
         else return newProd;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }
 
@@ -39,7 +39,7 @@ export const update = async (id, obj) => {
         const item = await prodDao.update(id, obj);
         return item;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }
 
@@ -48,7 +48,7 @@ export const remove = async (id) => {
         const item = await prodDao.delete(id);
         return item;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }
 
@@ -58,6 +58,6 @@ export const getByIdDTO = async (id) => {
         if (!prod) return false;
         else return prod;
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }

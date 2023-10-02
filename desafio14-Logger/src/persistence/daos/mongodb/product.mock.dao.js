@@ -16,7 +16,7 @@ export default class ProductDaoMongo extends MongoDao {
             }
             return users;
         } catch (error) {
-            next(error);
+            console.log(error)
         }
     };
 }
