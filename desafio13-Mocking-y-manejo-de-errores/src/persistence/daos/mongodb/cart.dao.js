@@ -15,7 +15,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.find({});
             return response;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -27,7 +27,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.findById(id).populate('products._id');
             return response;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -53,7 +53,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -65,7 +65,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.findByIdAndDelete(id);
             return response;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -83,7 +83,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -99,7 +99,7 @@ export default class CartDaoMongo extends MongoDao {
             cart.save();
             return cart;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -123,7 +123,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -142,7 +142,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 

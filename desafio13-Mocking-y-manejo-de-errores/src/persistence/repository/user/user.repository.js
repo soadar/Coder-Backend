@@ -13,7 +13,7 @@ export default class ProductRepository {
             const aux = new UserResDTO(response)
             return new UserResDTO(response);
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 }

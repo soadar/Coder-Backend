@@ -18,7 +18,7 @@ export default class UserDaoFS {
             await fs.promises.writeFile(this.path, JSON.stringify(usersFile));
             return user;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -41,7 +41,7 @@ export default class UserDaoFS {
                 return [];
             }
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -53,7 +53,7 @@ export default class UserDaoFS {
             else return false;
             //    user ? user : false
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -68,7 +68,7 @@ export default class UserDaoFS {
             }
             await fs.promises.writeFile(this.path, JSON.stringify(usersFile));
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -82,7 +82,7 @@ export default class UserDaoFS {
                 throw new Error('User not found');
             }
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 }

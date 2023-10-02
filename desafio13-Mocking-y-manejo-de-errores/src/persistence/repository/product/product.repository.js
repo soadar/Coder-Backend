@@ -12,7 +12,7 @@ export default class ProductRepository {
             const response = await this.dao.getById(id);
             return new ProductResDTO(response);
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 }

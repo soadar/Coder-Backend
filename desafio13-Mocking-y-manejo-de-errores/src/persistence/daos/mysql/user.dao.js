@@ -20,7 +20,7 @@ export default class UserDaoMySql extends MySQLDao {
             }
             else return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     };
 
@@ -45,7 +45,7 @@ export default class UserDaoMySql extends MySQLDao {
                 });
             } else return false;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     };
 
@@ -54,7 +54,7 @@ export default class UserDaoMySql extends MySQLDao {
             const userExist = await this.getByAttr(id)
             return userExist ? userExist : false;
         } catch (error) {
-            next(error)
+            console.log(error);
         }
     };
 
@@ -67,7 +67,7 @@ export default class UserDaoMySql extends MySQLDao {
             });
             return userExist ? userExist : false;
         } catch (error) {
-            next(error)
+            console.log(error);
         }
     };
 }

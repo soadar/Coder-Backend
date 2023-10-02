@@ -13,6 +13,6 @@ export const emailWelcome = async (req, res) => {
         await transporter.sendMail(gmailOptions);
         console.log('email enviado!');
     } catch (error) {
-        next(error)
+        console.log(error)
     }
 }

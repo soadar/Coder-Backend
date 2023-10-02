@@ -36,7 +36,7 @@ export const githubUser = async (req, res, next) => {
             },
         });
     } catch (error) {
-        next(error.message);
+        next(error);
     }
 };
 
@@ -49,6 +49,6 @@ export const getByIdDTO = async (req, res, next) => {
             return http.Ok(res, response);
         }
     } catch (error) {
-        next(error.message);
+        next(error);
     }
 }

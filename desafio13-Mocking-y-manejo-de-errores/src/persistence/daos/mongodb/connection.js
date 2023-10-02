@@ -6,6 +6,6 @@ export const initMongoDB = async () => {
         await connect(config.MONGO_ATLAS_URL)
         console.log('Conectado a MongoDB!');
     } catch (error) {
-        next(error);
+        console.log(error)
     }
 }

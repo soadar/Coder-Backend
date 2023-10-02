@@ -18,7 +18,7 @@ export default class MessageManager {
             await fs.promises.writeFile(this.path, JSON.stringify(msgFile));
             return msg;
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -41,7 +41,7 @@ export default class MessageManager {
                 return []
             }
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
@@ -65,7 +65,7 @@ export default class MessageManager {
             }
             await fs.promises.writeFile(this.path, JSON.stringify(msgsFile));
         } catch (error) {
-            next(error);
+            console.log(error);
         }
     }
 
