@@ -7,7 +7,7 @@ export const getAll = async () => {
         const response = await prodDao.getAll();
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -17,6 +17,6 @@ export const create = async (obj) => {
         if (!newProd) return false;
         else return newProd;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }

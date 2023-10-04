@@ -10,7 +10,7 @@ export const getAll = async () => {
         const response = await cartDao.getAll();
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -19,7 +19,7 @@ export const getById = async (id) => {
         const response = await cartDao.getById(id);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -28,7 +28,7 @@ export const create = async () => {
         const response = await cartDao.create();
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -37,7 +37,7 @@ export const update = async (cid, pic) => {
         const response = await cartDao.update(cid, pic);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -46,7 +46,7 @@ export const updateCant = async (cid, pic, cant) => {
         const response = await cartDao.updateCant(cid, pic, cant);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -55,7 +55,7 @@ export const delProdInCart = async (cid, pic) => {
         const response = await cartDao.delProdInCart(cid, pic);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -64,7 +64,7 @@ export const delProdsInCart = async (cid) => {
         const response = await cartDao.delProdsInCart(cid);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -73,7 +73,7 @@ export const purchase = async (cid) => {
         const response = await cartDao.purchase(cid);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -82,6 +82,6 @@ export const getByCart = async (cid) => {
         const response = await userDao.getByCart(cid);
         return response;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }

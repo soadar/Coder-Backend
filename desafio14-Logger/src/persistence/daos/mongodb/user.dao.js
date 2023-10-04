@@ -20,7 +20,7 @@ export default class UserDaoMongo extends MongoDao {
             }
             else return false;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     };
 
@@ -45,7 +45,7 @@ export default class UserDaoMongo extends MongoDao {
                 });
             } else return false;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     };
 
@@ -54,7 +54,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findById(id).populate('cart') //propiedad - atributo
             return userExist ? userExist : false;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     };
 
@@ -63,7 +63,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findOne({ email });
             return userExist ? userExist : false;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     };
 
@@ -72,7 +72,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findOne({ cart });
             return userExist ? userExist : false;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     };
 }

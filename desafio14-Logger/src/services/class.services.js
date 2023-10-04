@@ -10,7 +10,7 @@ export default class Services {
       const items = await this.dao.getAll();
       return items;
     } catch (error) {
-      log.fatal(error)
+      log.fatal(error.message)
     }
   };
 
@@ -20,7 +20,7 @@ export default class Services {
       if (!item) return false;
       else return item;
     } catch (error) {
-      log.fatal(error)
+      log.fatal(error.message)
     }
   };
 
@@ -30,7 +30,7 @@ export default class Services {
       if (!newItem) return false;
       else return newItem;
     } catch (error) {
-      log.fatal(error)
+      log.fatal(error.message)
     }
   };
 
@@ -40,7 +40,7 @@ export default class Services {
       if (!item) return false;
       else return await this.dao.update(id, obj);
     } catch (error) {
-      log.fatal(error)
+      log.fatal(error.message)
     }
   };
 
@@ -50,7 +50,7 @@ export default class Services {
       if (!item) return false;
       else return await this.dao.delete(id);
     } catch (error) {
-      log.fatal(error)
+      log.fatal(error.message)
     }
   };
 }

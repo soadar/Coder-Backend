@@ -14,7 +14,7 @@ export default class ProductRepository {
             const aux = new UserResDTO(response)
             return new UserResDTO(response);
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     }
 }

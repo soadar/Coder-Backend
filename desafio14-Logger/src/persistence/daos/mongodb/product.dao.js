@@ -20,7 +20,7 @@ export default class ProductDaoMongo extends MongoDao {
             const response = await this.model.paginate(filter, options);
             return response;
         } catch (error) {
-            log.fatal(error)
+            log.fatal(error.message)
         }
     }
 }

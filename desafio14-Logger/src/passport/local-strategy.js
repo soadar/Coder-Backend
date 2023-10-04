@@ -18,7 +18,7 @@ const login = async (req, email, password, done) => {
         if (!userLogin) return done(null, false, { message: 'User not found' });
         return done(null, userLogin);
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 };
 
@@ -30,7 +30,7 @@ const register = async (req, email, aux, done) => {
         emailWelcome(req);
         return done(null, newUser);
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 };
 

@@ -11,7 +11,7 @@ export const getAll = async (page, limit, sort, query) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -21,7 +21,7 @@ export const getById = async (id) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -31,7 +31,7 @@ export const create = async (obj) => {
         if (!newProd) return false;
         else return newProd;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -40,7 +40,7 @@ export const update = async (id, obj) => {
         const item = await prodDao.update(id, obj);
         return item;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -49,7 +49,7 @@ export const remove = async (id) => {
         const item = await prodDao.delete(id);
         return item;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
 
@@ -59,6 +59,6 @@ export const getByIdDTO = async (id) => {
         if (!prod) return false;
         else return prod;
     } catch (error) {
-        log.fatal(error)
+        log.fatal(error.message)
     }
 }
