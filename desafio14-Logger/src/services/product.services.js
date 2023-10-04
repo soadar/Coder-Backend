@@ -2,6 +2,7 @@ import ProductManager from "../persistence/daos/mongodb/product.dao.js";
 const prodDao = new ProductManager();
 
 import ProductRepository from "../persistence/repository/product/product.repository.js";
+import log from "../utils/logger.js";
 const prodRepository = new ProductRepository();
 
 export const getAll = async (page, limit, sort, query) => {
@@ -10,7 +11,7 @@ export const getAll = async (page, limit, sort, query) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -20,7 +21,7 @@ export const getById = async (id) => {
         if (!item) return false;
         else return item;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -30,7 +31,7 @@ export const create = async (obj) => {
         if (!newProd) return false;
         else return newProd;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -39,7 +40,7 @@ export const update = async (id, obj) => {
         const item = await prodDao.update(id, obj);
         return item;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -48,7 +49,7 @@ export const remove = async (id) => {
         const item = await prodDao.delete(id);
         return item;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -58,6 +59,6 @@ export const getByIdDTO = async (id) => {
         if (!prod) return false;
         else return prod;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }

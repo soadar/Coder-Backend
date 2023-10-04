@@ -1,4 +1,5 @@
 import { fakerES as faker } from "@faker-js/faker";
+import log from "../../../utils/logger.js";
 import { ProductMockModel } from '../mongodb/models/product.mock.model.js';
 import MongoDao from "./mongo.dao.js";
 
@@ -16,7 +17,7 @@ export default class ProductDaoMongo extends MongoDao {
             }
             return users;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 }

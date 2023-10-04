@@ -1,4 +1,5 @@
 import { createHash, isValidPassword } from '../../../utils.js';
+import log from '../../../utils/logger.js';
 import CartDao from '../mongodb/cart.dao.js';
 import { UserModel } from "./models/user.model.js";
 import MongoDao from "./mongo.dao.js";
@@ -19,7 +20,7 @@ export default class UserDaoMongo extends MongoDao {
             }
             else return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -44,7 +45,7 @@ export default class UserDaoMongo extends MongoDao {
                 });
             } else return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -53,7 +54,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findById(id).populate('cart') //propiedad - atributo
             return userExist ? userExist : false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -62,7 +63,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findOne({ email });
             return userExist ? userExist : false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -71,7 +72,7 @@ export default class UserDaoMongo extends MongoDao {
             const userExist = await this.model.findOne({ cart });
             return userExist ? userExist : false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 }

@@ -1,3 +1,5 @@
+import log from "../../../utils/logger";
+
 export default class MongoDao {
     constructor(model) {
         this.model = model;
@@ -8,7 +10,7 @@ export default class MongoDao {
             const response = await this.model.find({});
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -17,7 +19,7 @@ export default class MongoDao {
             const response = await this.model.findById(id);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -26,7 +28,7 @@ export default class MongoDao {
             const response = await this.model.create(obj);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -36,7 +38,7 @@ export default class MongoDao {
             const updateProd = await this.model.findByIdAndUpdate(id, { obj });
             return updateProd;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -45,7 +47,7 @@ export default class MongoDao {
             const response = await this.model.findByIdAndDelete(id);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

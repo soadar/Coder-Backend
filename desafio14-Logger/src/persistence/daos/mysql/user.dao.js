@@ -1,4 +1,5 @@
 import { createHash, isValidPassword } from '../../../utils.js';
+import log from '../../../utils/logger.js';
 import CartDao from './cart.dao.js';
 import { UserModel } from "./models/user.model.js";
 import MySQLDao from "./mysql.dao.js";
@@ -20,7 +21,7 @@ export default class UserDaoMySql extends MySQLDao {
             }
             else return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -45,7 +46,7 @@ export default class UserDaoMySql extends MySQLDao {
                 });
             } else return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -54,7 +55,7 @@ export default class UserDaoMySql extends MySQLDao {
             const userExist = await this.getByAttr(id)
             return userExist ? userExist : false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 
@@ -67,7 +68,7 @@ export default class UserDaoMySql extends MySQLDao {
             });
             return userExist ? userExist : false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     };
 }

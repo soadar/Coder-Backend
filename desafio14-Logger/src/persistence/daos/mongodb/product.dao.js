@@ -1,3 +1,4 @@
+import log from "../../../utils/logger.js";
 import { ProductModel } from "./models/product.model.js";
 import MongoDao from "./mongo.dao.js";
 
@@ -19,7 +20,7 @@ export default class ProductDaoMongo extends MongoDao {
             const response = await this.model.paginate(filter, options);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

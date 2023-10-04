@@ -1,4 +1,5 @@
 import ProductManager from "../persistence/daos/mongodb/message.dao.js";
+import log from "../utils/logger.js";
 const prodDao = new ProductManager();
 
 export const getAll = async () => {
@@ -6,7 +7,7 @@ export const getAll = async () => {
         const response = await prodDao.getAll();
         return response;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }
 
@@ -16,6 +17,6 @@ export const create = async (obj) => {
         if (!newProd) return false;
         else return newProd;
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 }

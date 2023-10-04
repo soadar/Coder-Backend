@@ -1,3 +1,4 @@
+import log from "../../../utils/logger.js";
 import factory from "../../daos/factory.js";
 import ProductResDTO from "../../dtos/product/product.res.dto.js";
 const { prodDao } = factory;
@@ -12,7 +13,7 @@ export default class ProductRepository {
             const response = await this.dao.getById(id);
             return new ProductResDTO(response);
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

@@ -1,3 +1,5 @@
+import log from "../../../utils/logger";
+
 export default class MySQLDao {
     constructor(model) {
         this.model = model;
@@ -8,7 +10,7 @@ export default class MySQLDao {
             const response = await this.model.findAll();
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -21,7 +23,7 @@ export default class MySQLDao {
             });
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -30,7 +32,7 @@ export default class MySQLDao {
             const response = await this.model.create(obj);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -43,7 +45,7 @@ export default class MySQLDao {
             });
             return obj;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -56,7 +58,7 @@ export default class MySQLDao {
             });
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

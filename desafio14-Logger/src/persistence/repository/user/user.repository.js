@@ -1,3 +1,4 @@
+import log from "../../../utils/logger.js";
 import factory from "../../daos/factory.js";
 import UserResDTO from "../../dtos/user/user.res.dto.js";
 const { userDao } = factory;
@@ -13,7 +14,7 @@ export default class ProductRepository {
             const aux = new UserResDTO(response)
             return new UserResDTO(response);
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

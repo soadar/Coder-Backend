@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { __dirname } from '../../../utils.js';
+import log from '../../../utils/logger.js';
 const pathFile = __dirname + "/db/messages.json";
 
 export default class MessageManager {
@@ -18,7 +19,7 @@ export default class MessageManager {
             await fs.promises.writeFile(this.path, JSON.stringify(msgFile));
             return msg;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -41,7 +42,7 @@ export default class MessageManager {
                 return []
             }
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -65,7 +66,7 @@ export default class MessageManager {
             }
             await fs.promises.writeFile(this.path, JSON.stringify(msgsFile));
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 

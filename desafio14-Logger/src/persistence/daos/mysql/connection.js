@@ -12,6 +12,6 @@ export const initMySqlDB = async () => {
         await db.sync({ force: false });
         log.debug('Conectado a la base de datos de MYSQL');
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 };

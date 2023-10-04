@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { emailWelcome } from '../controllers/email.controller.js';
 import UserDao from '../persistence/daos/mongodb/user.dao.js';
+import log from '../utils/logger.js';
 const userDao = new UserDao();
 
 const strategyOptions = {
@@ -17,7 +18,7 @@ const login = async (req, email, password, done) => {
         if (!userLogin) return done(null, false, { message: 'User not found' });
         return done(null, userLogin);
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 };
 
@@ -29,7 +30,7 @@ const register = async (req, email, aux, done) => {
         emailWelcome(req);
         return done(null, newUser);
     } catch (error) {
-        console.log(error)
+        log.fatal(error)
     }
 };
 

@@ -1,3 +1,4 @@
+import log from "../../../utils/logger.js";
 import { CartModel } from "./models/cart.model.js";
 import MySQLDao from "./mysql.dao.js";
 
@@ -18,7 +19,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             });
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
     //falta migrar
@@ -44,7 +45,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -60,7 +61,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             });
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -79,7 +80,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -95,7 +96,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             cart.save();
             return cart;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -119,7 +120,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -138,7 +139,7 @@ export default class CartDaoMongoDB extends MySQLDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 //import { emailPurchase } from "../../../controllers/email.controller.js";
+import log from "../../../utils/logger.js";
 import { CartModel } from "./models/cart.model.js";
 import { ProductModel } from "./models/product.model.js";
 import MongoDao from "./mongo.dao.js";
@@ -15,7 +16,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.find({});
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -27,7 +28,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.findById(id).populate('products._id');
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -53,7 +54,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -65,7 +66,7 @@ export default class CartDaoMongo extends MongoDao {
             const response = await this.model.findByIdAndDelete(id);
             return response;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -83,7 +84,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -99,7 +100,7 @@ export default class CartDaoMongo extends MongoDao {
             cart.save();
             return cart;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -123,7 +124,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -142,7 +143,7 @@ export default class CartDaoMongo extends MongoDao {
             }
             return false;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 

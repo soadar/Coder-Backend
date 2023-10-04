@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { __dirname } from '../../../utils.js';
+import log from '../../../utils/logger.js';
 const pathFile = __dirname + "/db/users.json";
 
 export default class UserDaoFS {
@@ -18,7 +19,7 @@ export default class UserDaoFS {
             await fs.promises.writeFile(this.path, JSON.stringify(usersFile));
             return user;
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -41,7 +42,7 @@ export default class UserDaoFS {
                 return [];
             }
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -53,7 +54,7 @@ export default class UserDaoFS {
             else return false;
             //    user ? user : false
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -68,7 +69,7 @@ export default class UserDaoFS {
             }
             await fs.promises.writeFile(this.path, JSON.stringify(usersFile));
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 
@@ -82,7 +83,7 @@ export default class UserDaoFS {
                 throw new Error('User not found');
             }
         } catch (error) {
-            console.log(error)
+            log.fatal(error)
         }
     }
 }
