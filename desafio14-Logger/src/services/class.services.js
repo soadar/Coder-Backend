@@ -1,4 +1,4 @@
-import log from "../utils/logger";
+import log from "../utils/logger.js";
 
 export default class Services {
   constructor(dao) {
