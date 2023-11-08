@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="products.css" />
+{{#if info}}
+  <div class="text-center card w-25 mx-auto m-5">
+    Bienvenido !
+    {{#each info}}
+      {{#if this.email}}
+        <p class="m-0"><strong>first_name</strong> {{this.first_name}}</p>
+        <p class="m-0"><strong>last_name</strong> {{this.last_name}}</p>
+        <p class="m-0"><strong>Email</strong> {{this.email}}</p>
+        {{#unless this.isGitHub}}
+          <p class="m-0"><strong>Age</strong> {{this.age}}</p>
+        {{/unless}}
+        <p class="m-0"><strong>Rol</strong> {{this.role}}</p>
+      {{/if}}
+    {{/each}}
+  </div>
+{{/if}}
+
+<div id="titulo" class="d-flex justify-content-around mx-5 px-5">
+
+  <a
+    id="verChango"
+    data-id={{cart}}
+    class="text-center my-auto btn btn-primary"
+    href="http://localhost:8080/carts/{{cart}}"
+  > Carrito</a>
+  <h2 class="text-center">Lista de productos</h2>
+  <a class="text-center my-auto btn btn-primary" href="/logout">Logout</a>
+
+</div>
+
+<div class="d-flex justify-content-around m-3">
+  <p class="text-center">Total de paginas {{totalPages}}</p>
+  <p class="text-center">Pagina actual {{page}}</p>
+  <p class="text-center">Total de productos {{count}}</p>
+</div>
+<div id="links" class="d-flex justify-content-around mb-3">
+  <a href="{{prev}}">Pagina anterior</a>
+  <a href="/products">Pagina principal</a>
+  <a href="{{next}}">Pagina siguiente</a>
+</div>
+<div class="container">
+  <div class="d-flex flex-wrap mx-auto">
+    {{#each payload}}
+      {{#each this}}
+        {{#if this.title}}
+          <div id="products  ">
+            <ul class="product list-unstyled m-3">
+              <li><strong>title: </strong>{{this.title}}</li>
+              <li><strong>description: </strong>{{this.description}}</li>
+              <li><strong>code: </strong>{{this.code}}</li>
+              <li><strong>price: </strong>{{this.price}}</li>
+              <li><strong>status: </strong>{{this.status}}</li>
+              <li><strong>stock: </strong>{{this.stock}}</li>
+              <li><strong>category: </strong>{{this.category}}</li>
+              <li><strong>thumbnails: </strong>{{this.thumbnails}}</li>
+              <li>
+                <div class="text-center p-3">
+                  <button
+                    id="{{this._id}}"
+                    class="btn btn-success mx-auto addCart"
+                  >Agregar al carrito</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  </div>
+</div>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+!
+<script src="products.js"></script>

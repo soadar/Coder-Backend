@@ -1,0 +1,65 @@
+<main class="form-signin w-25 m-auto mt-5">
+
+  <h1 class="h3 mb-3 fw-normal text-center">Subir documentos</h1>
+
+  {{#if user}}
+    <div class="alert alert-danger text-center" role="alert">
+      {{user._id}}
+    </div>
+    {{#if msg}}
+      <div class="alert alert-danger text-center" role="alert">
+        {{msg}}
+      </div>
+    {{/if}}
+    <form
+      action="/api/users/{{user._id}}/documents"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <div class="form-floating mt-4">
+        <div class="mb-3 text-center rounded-4 border border-primary p-3">
+          <label for="profile" class="form-label">Subir imagen de
+            <strong>perfil</strong>
+          </label>
+          <input class="form-control" type="file" id="profile" name="profile" />
+        </div>
+        <div class="mb-3 text-center rounded-4 border border-primary p-3">
+          <label for="product" class="form-label">Subir imagen/es de un
+            <strong>producto</strong>
+          </label>
+          <input
+            class="form-control"
+            type="file"
+            id="product"
+            name="product"
+            multiple
+          />
+        </div>
+        <div class="mb-3 text-center rounded-4 border border-primary p-3">
+          <p>Subir <strong>documentos</strong></p>
+
+          <label for="document" class="form-label">Identificación</label>
+          <input
+            class="form-control"
+            type="file"
+            id="document"
+            name="document"
+          />
+          <label for="address" class="form-label mt-2">Comprobante de domicilio</label>
+          <input class="form-control" type="file" id="address" name="address" />
+
+          <label for="stateAccount" class="form-label mt-2">
+            Comprobante de estado de cuenta</label>
+          <input
+            class="form-control"
+            type="file"
+            id="stateAccount"
+            name="stateAccount"
+          />
+        </div>
+      </div>
+
+      <button class="btn btn-primary w-100 mt-2" type="submit">Enviar</button>
+    </form>
+  {{/if}}
+</main>
