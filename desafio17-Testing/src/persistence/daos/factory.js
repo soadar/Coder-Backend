@@ -1,7 +1,7 @@
 /* ------------------------------------ - ----------------------------------- */
 import log from "../../utils/logger.js";
-import ProductDaoFS from "./FileSystem/product.dao.js";
-import UserDaoFS from "./FileSystem/user.dao.js";
+import ProductDaoFS from "./fileSystem/product.dao.js";
+import UserDaoFS from "./fileSystem/user.dao.js";
 /* ------------------------------------ - ----------------------------------- */
 import { initMongoDB } from "./mongodb/connection.js";
 import ProductDaoMongo from "./mongodb/product.dao.js";
