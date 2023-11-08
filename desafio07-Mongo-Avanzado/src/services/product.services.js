@@ -1,4 +1,4 @@
-//import ProductManager from "../DAO/fileSystem/product.dao.js";
+//import ProductManager from "../DAO/filesystem/product.dao.js";
 //const prodDao = new ProductManager();
 
 import ProductManager from "../DAO/mongodb/product.dao.js";
