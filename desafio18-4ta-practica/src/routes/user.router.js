@@ -43,26 +43,18 @@ router.post('/:uid/documents', validateLogin, cpUpload, async (req, res, next) =
         const user = await userService.getByEmail(req.user.email);
         if (req.files['profile']) {
             const profile = req.files['profile'][0]
-            console.log(profile);
-
             user.documents.push({ name: profile.filename, reference: profile.path });
         }
         if (req.files['document']) {
             const document = req.files['document'][0]
-            console.log(document);
-
             user.documents.push({ name: `document_${document.filename}`, reference: document.path });
         }
         if (req.files['address']) {
             const address = req.files['address'][0]
-            console.log(address);
-
             user.documents.push({ name: `address_${address.filename}`, reference: address.path });
         }
         if (req.files['stateAccount']) {
             const stateAccount = req.files['stateAccount'][0]
-            console.log(stateAccount);
-
             user.documents.push({ name: `stateAccount_${stateAccount.filename}`, reference: stateAccount.path });
         }
         user.save();
